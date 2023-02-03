@@ -1,0 +1,214 @@
+@import './common';
+.menu {
+  font-weight: initial;
+  position: absolute;
+}
+#mainMenu,
+#sideMenu,
+#popupMenu{
+  @include popupMenu;
+  width: fit-content
+}
+#popupMenu{
+  position: absolute;
+  font-size: 14px;
+  padding: 3px;
+  z-index: 30;
+  .commentInput{
+    width: 300px;
+    margin: 10PX;
+    box-sizing: border-box
+  }
+}
+#mainMenu {
+  @include popupMenu;
+  width:240px;
+  max-height: inherit;
+  overflow-y: scroll;
+  .menu_inner {
+    padding: 5% 0;
+  }
+  .menu_search {
+    width: 100%;
+    input{
+      @include searchInput
+    }
+  }
+  #menu_editBtns > button >div ,
+  .menu_edit_inform{
+    width: 90%;
+    margin: 3% 5%;
+  }
+
+  #menu_editBtns .menu_editBtn {
+    @include editMenuBtns ;
+    &.off{
+      display: none;
+    }
+    .underline{
+      border-top:  1px solid $mud;
+    }
+    .arrowDown  svg {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+#sideMenu  {
+  display: block;
+  position:absolute;
+  z-index:20;
+  overflow-y:"scroll";
+  &>div{
+    width: 250px;
+  }
+  .noResult{
+    display: none;
+  }
+  .menu_color,
+  #commandBlock{
+    background-color: initial;
+  }
+  #commandBlock {
+    margin-top: 0;
+    overflow: initial;
+    .command_btn {
+      display: block
+    }
+  }
+}
+.menu_color{
+  @include popupMenu;
+  width: 200px;
+  color: initial;
+  font-weight: initial;
+  section > header {
+    font : {
+      size: 12px;
+      weight: 600
+    };
+    text-align: left;
+    color: $mud;
+  }
+  section {
+    padding: 3%;
+  }
+  section > header,
+  .colorIcon {
+    margin: 0 5px;
+  }
+  .colorInform {
+    display: flex;
+    font-size: 14px;
+    padding: 5px 0;
+    width: 100%;
+    span{
+      height: 22px;
+    }
+  }
+  .colorIcon {
+    border :1px solid $lightMud ;
+  }
+  .colorName {
+    margin-left: 5px;
+  }
+
+}
+#sideMenu #pageMenu{
+  .inner{
+    width: 100%;
+    height: fit-content
+  }
+}
+#sideBar_pageMenu #pageMenu {
+  background-color: #ffff;
+}
+#pageMenu {
+  @include popupMenu;
+  background-color: initial;
+  width: fit-content;
+  .inner{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column
+  }
+  .search{
+    input{
+      @include searchInput;
+      font-size: 14px;
+    }
+  }
+  .pages{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 90%;
+    margin: 5%;
+    header{
+      color:$itemText;
+      font : {
+        size: 12px;
+        weight: 500;
+      };
+      margin-bottom: 10px;
+    }
+  }
+  .page{
+    font-size: 14px;
+    padding: 5px 0;
+    &_inner{
+      display: flex;
+      height: 1rem;
+      & >div {
+        height: inherit;
+      }
+    }
+  }
+  .pageIcon {
+    width: 1rem;
+    margin-right: 12px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .pageTitle{
+    line-height: 1rem;
+    text-align: center;
+  }
+  #new_sub_page{
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid $lightMud;
+    padding-top: 10px;
+    padding-left: 10px;
+    svg{
+      color:$itemText;
+      font-weight: bolder;
+      margin-right: 5px;
+    }
+    span{
+      color: $itemText;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+}
+
+#moveTo_pageMenu{
+  #pageSugested, #new_sub_page {
+    display: none;
+  }
+}
+
+@media screen and (max-width:767px){
+  #mainMenu , #sideMenu{
+    width: 200px;
+  }
+  #sideMenu >div{
+    width: 100%;
+  }
+}

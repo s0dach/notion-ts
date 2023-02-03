@@ -1,0 +1,329 @@
+@import './common';
+.comments{
+  display: flex;
+  margin: 8px 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $lightMud;
+  width: 100%;
+  &>div {
+    font-size: 14px;
+  }
+}
+.comment,
+.main_comment,
+.comment_comment,
+.comments_comments,
+.commentBlock {
+  width: inherit;
+}
+.blockId_comments{
+  .comments{
+    display: none;
+  }
+}
+.blockId_comments.open {
+  z-index: 5;
+
+  .comments{
+  display: flex;
+  flex-direction: column;
+
+  }
+  .commentBtn.btnIcon{
+    display: none
+  }
+}
+  
+.comment_header ,
+.commentInput {
+  height: 20px;
+}
+.commentBlock .firstLetter, 
+.commentInput .firstLetter{
+    display: flex;
+    width: 20px;
+    height: inherit;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 50%;
+    border :1px solid black;
+    color: black;
+    text-align: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 5px;
+    div{
+      width: 20px;
+      height: 20px;
+      font : {
+        size:14px ;
+        weight: initial;
+      }
+    }
+  }
+.comment {
+  padding: 5%;
+  border-top: 1px solid $lightMud;
+  z-index: 10;
+  box-sizing: border-box;
+}
+  .comment:first-child{
+    border-top: none;
+  }
+.pageHeader .comments{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  .comments_comments {
+    width: inherit;
+  }
+  .commentBlock {
+    .comment_header{
+      margin-bottom: 6px;
+    }
+  }
+  .comment{
+    padding:0;
+  }
+}
+#block_comments {
+  position: absolute;
+  z-index: 20;
+  padding-bottom: 0;
+  @include popupMenu;
+  overflow-y: scroll;
+  .comments_comments {
+    width: 100%;
+    margin: 0;
+    padding-bottom:0 ;
+  }
+} 
+.pageComment {
+  position: relative;
+  .commentBlock {
+    .comment_header .information ,
+    .comment_content {
+      font-size: inherit;
+    }
+  }
+  .commentInput form input
+  {
+    font-size: inherit;
+  }
+  .comments{
+    position: relative;
+  }
+  .comments .comment_block{
+    display: none;
+  }
+}
+
+#commentsInner {
+  position: relative;
+}
+.commentType{
+  border-bottom: 1px solid $lightMud;
+  padding: 0 5%; 
+  display: flex;
+  button{
+    height: 100%;
+    margin: 10px 5px; 
+  }
+}
+.commentBlock{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    width: 100%;
+    &>div {
+      font-size: 14px;
+    }
+
+  .comment_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    .information {
+      display:flex ;
+      flex-direction: row;
+      font-size: 14px;
+      height: inherit;
+    }
+    .firstLetter{
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+    .userName{
+      margin: 0 5px;
+      flex-shrink: 1;
+      flex-grow: 1;
+      font-weight: bold;
+      text-align: center;
+      line-height: 20px;
+      text-overflow: ellipsis;
+    }
+    .time{
+      margin:0;
+      color: $itemSvg;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      flex-shrink: 2;
+      text-overflow: ellipsis;
+    }
+    .commentTool{
+      display: flex;
+      align-content: center;
+      border: 1px solid $itemSvg;
+      border-radius: 2px;
+      height: 20px;
+      button{
+        width: fit-content;
+        color: $itemSvg;
+      fill: $itemSvg;
+        height:100% ;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        font-size: 12px;
+        span{
+          padding: 3px;
+        }
+        svg{
+          font : {
+            font-size: 1rem;
+            weight: bolder;
+          }
+        }
+      }
+      .resolveTool {
+        border-right: 1px solid $itemSvg;
+      }
+    }
+  }
+  .comment_block, 
+  .comment_content, 
+  .editComment{
+    margin-left: 34px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .comment_block{
+    height: fit-content;
+    display: flex;
+    color: $itemText
+  }
+  .comment_block_line{
+    width: 3px;
+    border-radius: 3px;
+    margin : {
+      left: 2px;
+      right: 8px;
+    };
+    flex-shrink: 0;
+    padding-bottom: 2px;
+    background: rgba(255, 212, 0, 0.8);
+  } 
+  .commentInput{
+    width: calc( 100% - 34px);
+    box-sizing: border-box;
+    input[type="text"]{
+      margin: 0;
+    }
+  }
+  .tool {
+    button{
+
+      &:hover{
+        background-color: $itemHover;
+        color:black
+      }
+    }
+  }
+  .moreTool{
+    position: relative;
+  }
+}
+#popupMenu{
+  padding: 2%;
+  @include popupMenu;
+  .commentInput{
+    flex-direction: row;
+  }
+}
+.commentInput {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0;
+  form{
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: inherit;
+    position: relative;
+    width: calc( 100% - 24px);
+    box-sizing: border-box
+    }
+    input[type="text"]{
+      @include searchInput;
+      background-color: initial;
+      border: none;
+      padding: 0;
+      height: 100%;
+      width: 90%;
+      margin: 0 2.5%;
+      font-size: 14px;
+    }
+    .commentText{
+      &:focus{
+        outline:  none;
+      }
+    }
+  }
+
+form button{
+  svg{
+    font-size: 1.3rem;
+    color: $itemSvg;
+      fill: $itemSvg; 
+  }
+}
+#tool_more{
+  @include popupMenu;
+  width: 200px;
+  z-index: 25;
+  button{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 16.8px;
+    min-height: 28px;
+    &:hover{
+      background-color: $itemHover;
+    }
+    svg{
+      width: 18px;
+      height: inherit;
+      font-weight: lighter;
+    }
+    span{
+      margin: {
+        left: 6px;
+      };
+    }
+  }
+  .aboutComments{
+    color: $itemText;
+    font-size: 13px;
+    border-top: 1px solid $lightMud;
+  }
+}
